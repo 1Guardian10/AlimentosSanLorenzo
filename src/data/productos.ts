@@ -5,6 +5,11 @@ export interface Producto {
   descripcion: string;
   caracteristicas: string[];
   imagen: string;
+  precio: number;
+  descuento?: number;
+  esCombo?: boolean;
+  productoCombo?: string[];
+  comboItems?: number[];
 }
 
 export const productos: Producto[] = [
@@ -18,7 +23,9 @@ export const productos: Producto[] = [
       "Mayor producción",
       "Costo-beneficio óptimo"
     ],
-    imagen: "https://via.placeholder.com/300x300?text=Premium+Vacas"
+    imagen: "https://via.placeholder.com/300x300?text=Premium+Vacas",
+    precio: 45000,
+    descuento: 10
   },
   {
     id: 2,
@@ -30,7 +37,9 @@ export const productos: Producto[] = [
       "Vitaminas B12",
       "Digestibilidad alta"
     ],
-    imagen: "https://via.placeholder.com/300x300?text=Terneras"
+    imagen: "https://via.placeholder.com/300x300?text=Terneras",
+    precio: 38000,
+    descuento: 5
   },
   {
     id: 3,
@@ -42,8 +51,36 @@ export const productos: Producto[] = [
       "Ganancias 950g/día",
       "Carne de calidad"
     ],
-    imagen: "https://via.placeholder.com/300x300?text=Porcinos+Engorde"
+    imagen: "https://via.placeholder.com/300x300?text=Porcinos+Engorde",
+      precio: 42000,
+      descuento: 15
   },
+    {
+      id: 6,
+      nombre: "Suplemento Vitamínico",
+      categoria: "Porcinos",
+      descripcion: "Suplemento concentrado para soporte nutricional",
+      caracteristicas: [
+        "Vitaminas A, D, E",
+        "Mejora apetito",
+        "Fácil de mezclar"
+      ],
+      imagen: "https://via.placeholder.com/300x300?text=Suplemento+Vitamínico",
+      precio: 8000
+    },
+    {
+      id: 7,
+      nombre: "Combo Engorde + Suplemento",
+      categoria: "Porcinos",
+      descripcion: "Combo: Alimento Porcinos Engorde + Suplemento Vitamínico",
+      caracteristicas: ["Ahorro por combo", "Mejor rendimiento"],
+      imagen: "https://via.placeholder.com/300x300?text=Combo+Engorde",
+      precio: 0,
+      descuento: 10,
+      esCombo: true,
+      productoCombo: ["Alimento Porcinos Engorde", "Suplemento Vitamínico"],
+      comboItems: [3, 6]
+    },
   {
     id: 4,
     nombre: "Iniciador Porcinos Post-Destete",
@@ -54,7 +91,8 @@ export const productos: Producto[] = [
       "Adaptación suave",
       "Salud intestinal"
     ],
-    imagen: "https://via.placeholder.com/300x300?text=Post-Destete"
+    imagen: "https://via.placeholder.com/300x300?text=Post-Destete",
+    precio: 35000
   },
   {
     id: 5,
@@ -66,32 +104,10 @@ export const productos: Producto[] = [
       "Pigmentantes naturales",
       "Huevos de calidad premium"
     ],
-    imagen: "https://via.placeholder.com/300x300?text=Aves+Postura"
+    imagen: "https://via.placeholder.com/300x300?text=Aves+Postura",
+    precio: 40000,
+    descuento: 8
   },
-  {
-    id: 6,
-    nombre: "Alimento Ovinos Engorde",
-    categoria: "Ovinos",
-    descripcion: "Fórmula especializada para ovinos en fase de engorde",
-    caracteristicas: [
-      "Proteína 14%",
-      "Crecimiento rápido",
-      "Rendimiento de carcasa"
-    ],
-    imagen: "https://via.placeholder.com/300x300?text=Ovinos+Engorde"
-  },
-  {
-    id: 7,
-    nombre: "Alimento Caprinos Lactancia",
-    categoria: "Caprinos",
-    descripcion: "Optimizado para máxima producción de leche",
-    caracteristicas: [
-      "Proteína 16%",
-      "Energía concentrada",
-      "Calidad de leche"
-    ],
-    imagen: "https://via.placeholder.com/300x300?text=Caprinos+Lactancia"
-  }
 ];
 
 export const categorias = [
@@ -99,6 +115,4 @@ export const categorias = [
   "Bovinos",
   "Porcinos",
   "Aves",
-  "Ovinos",
-  "Caprinos"
 ];

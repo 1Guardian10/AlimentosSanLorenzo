@@ -1,6 +1,18 @@
 import { Link } from "react-router-dom";
+// Importar los iconos de react-icons
+import { FaPhoneAlt, FaEnvelope, FaMapMarkerAlt } from "react-icons/fa";
+import {useNavigate} from 'react-router-dom';
 
 const Footer = () => {
+  const navigate = useNavigate();
+
+  function handleLocationClick(url:string) {
+    navigate(url);
+    // Asegurar que la página de nosotros quede al inicio
+    setTimeout(() => {
+      window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+    }, 50);
+  }
   return (
     <footer className="bg-blue-900 text-white">
       {/* Contenido principal */}
@@ -24,14 +36,20 @@ const Footer = () => {
             <h3 className="font-bold text-lg mb-4">Navegación</h3>
             <ul className="space-y-2 text-blue-100">
               <li>
-                <Link to="/" className="hover:text-white transition-colors">
+                <button
+                  onClick={() => handleLocationClick('/')}
+                  className="hover:text-white transition-colors"
+                >
                   Inicio
-                </Link>
+                </button>
               </li>
               <li>
-                <Link to="/productos" className="hover:text-white transition-colors">
-                  Catálogo
-                </Link>
+                <button
+                  onClick={() => handleLocationClick('/productos')}
+                  className="hover:text-white transition-colors"
+                >
+                  Catalogo
+                </button>
               </li>
             </ul>
           </div>
@@ -55,11 +73,6 @@ const Footer = () => {
                   Aves
                 </button>
               </li>
-              <li>
-                <button className="hover:text-white transition-colors text-left">
-                  Ovinos
-                </button>
-              </li>
             </ul>
           </div>
 
@@ -68,20 +81,24 @@ const Footer = () => {
             <h3 className="font-bold text-lg mb-4">Contacto</h3>
             <ul className="space-y-3 text-blue-100">
               <li className="flex items-center gap-2">
-                <span className="text-xl">📞</span>
+                {/* Icono de teléfono */}
+                <FaPhoneAlt className="text-white" />
                 <a href="tel:+573001234567" className="hover:text-white transition-colors">
                   (+57) 300 123 4567
                 </a>
               </li>
               <li className="flex items-center gap-2">
-                <span className="text-xl">✉️</span>
+                {/* Icono de correo */}
+                <FaEnvelope className="text-white" />
                 <a href="mailto:info@sanlorenzo.com" className="hover:text-white transition-colors">
                   info@sanlorenzo.com
                 </a>
               </li>
               <li className="flex items-center gap-2">
-                <span className="text-xl">📍</span>
-                <span>Bogotá, Colombia</span>
+                {/* Icono de ubicación */}
+                <FaMapMarkerAlt className="text-white" />
+                {/* Ubicación corregida */}
+                <span>San Lorenzo - Tarija, Bolivia[citation:1]</span>
               </li>
             </ul>
           </div>
@@ -96,15 +113,12 @@ const Footer = () => {
             © 2025 Alimentos Balanceados San Lorenzo. Todos los derechos reservados.
           </p>
           <div className="flex gap-6 mt-4 md:mt-0">
-            <Link to="#" className="hover:text-white transition-colors">
-              Términos
-            </Link>
-            <Link to="#" className="hover:text-white transition-colors">
-              Privacidad
-            </Link>
-            <Link to="/contactanos" className="hover:text-white transition-colors">
-              Contacto
-            </Link>
+            <button
+                  onClick={() => handleLocationClick('/Contactanos')}
+                  className="hover:text-white transition-colors"
+                >
+                  Contacto
+                </button>
           </div>
         </div>
       </div>

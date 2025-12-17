@@ -15,7 +15,9 @@ const Productos = () => {
     const cumpleBusqueda = producto.nombre
       .toLowerCase()
       .includes(busqueda.toLowerCase());
-    return cumpleCategoria && cumpleBusqueda;
+    // Excluir combos de la página de catálogo general
+    const noEsCombo = !producto.esCombo;
+    return cumpleCategoria && cumpleBusqueda && noEsCombo;
   });
 
   return (

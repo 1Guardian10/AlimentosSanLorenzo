@@ -1,11 +1,16 @@
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import MisionVision from "../components/MisionVision";
+import Fabrica from "../components/Fabrica";
+import QuienesSomos from "../components/QuienesSomos";
 
 const Nosotros = () => {
     return (
         <>
-        <Navbar />
-        <h1 className="text-blue-700">Seccion de nosotros </h1>
+        <Navbar />      
+        <QuienesSomos/>      
+        <Fabrica />
+        <MisionVision />
         <Footer />
         </>
     )
