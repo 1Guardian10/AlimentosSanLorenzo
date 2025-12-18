@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react"
 
-const DEFAULT_VIDEO_ID = "l5YwpgwyEkc"
+const DEFAULT_VIDEO_ID = "J__BajhUv1w"
 
 const Video = ({ videoId = DEFAULT_VIDEO_ID }: { videoId?: string }) => {
     const [embeddable, setEmbeddable] = useState<boolean | null>(null)
