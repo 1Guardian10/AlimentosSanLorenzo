@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 // Importar los iconos de react-icons
 import { FaPhoneAlt, FaEnvelope, FaMapMarkerAlt } from "react-icons/fa";
 import {useNavigate} from 'react-router-dom';

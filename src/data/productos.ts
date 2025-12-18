@@ -23,7 +23,7 @@ export const productos: Producto[] = [
       "Mayor producción",
       "Costo-beneficio óptimo"
     ],
-    imagen: "https://via.placeholder.com/300x300?text=Premium+Vacas",
+    imagen: "images/producto1.png",
     precio: 45000,
     descuento: 10
   },
@@ -37,7 +37,7 @@ export const productos: Producto[] = [
       "Vitaminas B12",
       "Digestibilidad alta"
     ],
-    imagen: "https://via.placeholder.com/300x300?text=Terneras",
+    imagen: "images/producto1.png",
     precio: 38000,
     descuento: 5
   },
@@ -51,7 +51,7 @@ export const productos: Producto[] = [
       "Ganancias 950g/día",
       "Carne de calidad"
     ],
-    imagen: "https://via.placeholder.com/300x300?text=Porcinos+Engorde",
+    imagen: "images/producto2.png",
       precio: 42000,
       descuento: 15
   },
@@ -65,7 +65,7 @@ export const productos: Producto[] = [
         "Mejora apetito",
         "Fácil de mezclar"
       ],
-      imagen: "https://via.placeholder.com/300x300?text=Suplemento+Vitamínico",
+    imagen: "images/producto2.png",
       precio: 8000
     },
     {
@@ -74,7 +74,7 @@ export const productos: Producto[] = [
       categoria: "Porcinos",
       descripcion: "Combo: Alimento Porcinos Engorde + Suplemento Vitamínico",
       caracteristicas: ["Ahorro por combo", "Mejor rendimiento"],
-      imagen: "https://via.placeholder.com/300x300?text=Combo+Engorde",
+    imagen: "images/producto2.png",
       precio: 0,
       descuento: 10,
       esCombo: true,
@@ -91,7 +91,7 @@ export const productos: Producto[] = [
       "Adaptación suave",
       "Salud intestinal"
     ],
-    imagen: "https://via.placeholder.com/300x300?text=Post-Destete",
+    imagen: "images/producto2.png",
     precio: 35000
   },
   {
@@ -104,7 +104,7 @@ export const productos: Producto[] = [
       "Pigmentantes naturales",
       "Huevos de calidad premium"
     ],
-    imagen: "https://via.placeholder.com/300x300?text=Aves+Postura",
+    imagen: "images/producto3.png",
     precio: 40000,
     descuento: 8
   },

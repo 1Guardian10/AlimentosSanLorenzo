@@ -11,7 +11,12 @@ node_modules
 dist
 dist-ssr
 *.local
+#ignorar el video
+public/videos/fabrica.mp4
 
+.firebase
+.firebaserc
+firebase.json
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

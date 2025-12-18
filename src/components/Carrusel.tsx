@@ -65,7 +65,11 @@
     const pauseAutoPlay = () => {
         setIsAutoPlaying(false)
         setTimeout(() => setIsAutoPlaying(true), 10000)
-        navigate('/contactanos');
+    }
+
+    const navigateToContact = () => {
+        pauseAutoPlay()
+        navigate('/contactanos')
     }
 
     return (
@@ -142,7 +146,7 @@
                     hover:scale-105 hover:shadow-3xl active:scale-95
                     ${isAnimating ? "opacity-0 scale-95" : "opacity-100 scale-100"}
                 `}
-                onClick={pauseAutoPlay}
+                onClick={navigateToContact}
                 >
                 Obtén Más Información
                 </button>

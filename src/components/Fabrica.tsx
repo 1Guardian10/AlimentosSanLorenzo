@@ -1,6 +1,7 @@
     "use client"
 
     import { CheckCircle, ShieldCheck, Package, Settings } from "lucide-react"
+import Video from "./Video"
 
     export default function Fabrica() {
     return (
@@ -20,16 +21,8 @@
             <div className="grid md:grid-cols-2 gap-16 items-center mb-20">
 
             {/* VIDEO - Mantenido como estaba */}
-            <div className="rounded-2xl overflow-hidden shadow-lg">
-                <video
-                src="/videos/fabrica.mp4"
-                className="w-full h-[400px] object-cover"
-                autoPlay
-                muted
-                loop
-                controls
-                />
-            </div>
+
+            <Video/>
 
             {/* Texto simple */}
             <div>

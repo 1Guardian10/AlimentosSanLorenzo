@@ -205,7 +205,7 @@
                         <div>
                             <h3 className="font-bold text-gray-800 mb-1">Email</h3>
                             <div className="space-y-2">
-                            <a href="mailto:angoladiego5@gmail.com" className="text-gray-700 hover:text-red-600 block font-medium">
+                            <a href="mailto:ventas@sanlorenzo.com" className="text-gray-700 hover:text-red-600 block font-medium">
                                 ventas@sanlorenzo.com
                             </a>
                             <a href="mailto:soporte@sanlorenzo.com" className="text-gray-700 hover:text-red-600 block font-medium">
