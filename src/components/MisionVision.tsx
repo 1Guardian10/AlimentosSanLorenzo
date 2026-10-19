@@ -1,5 +1,3 @@
-    "use client"
-
     import { Target, Eye, ShieldCheck, Leaf, Handshake } from "lucide-react"
 
     export default function MisionVision() {
@@ -9,7 +7,7 @@
 
             {/* Título */}
             <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 text-blue-700">
-            Nuestra Mision y Vision
+            Nuestra Misión y Visión
             </h2>
 
             {/* Misión y Visión */}

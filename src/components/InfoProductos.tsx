@@ -1,64 +1,7 @@
-    "use client"
+    import { Link } from "react-router-dom"
+    import { categoriasInfo } from "../data/productos"
 
-    import { Milk, Bird, PiggyBank } from "lucide-react"
-    import { useNavigate } from "react-router-dom"
-
-    export default function Productos() {
-    const productos = [
-        {
-        id: 1,
-        nombre: "Alimento para Vacas",
-        icon: Milk,
-        color: "bg-blue-600", // Azul
-        beneficios: [
-            "Aumenta producción de leche",
-            "Mejora calidad nutricional",
-            "Promueve crecimiento muscular",
-            "Sistema digestivo óptimo",
-            "Fortalece sistema inmunológico",
-        ],
-        descripcion:
-            "Fórmula balanceada especialmente desarrollada para maximizar la producción lechera y el crecimiento de ganado bovino.",
-        },
-        {
-        id: 2,
-        nombre: "Alimento para Gallinas",
-        icon: Bird,
-        color: "bg-red-600", // Rojo
-        beneficios: [
-            "Aumenta producción de huevos",
-            "Fortalece cáscara de huevo",
-            "Plumaje más brillante",
-            "Mayor vitalidad y salud",
-            "Nutrientes esenciales equilibrados",
-        ],
-        descripcion: "Nutrición completa para gallinas ponedoras con todos los elementos necesarios para postura óptima.",
-        },
-        {
-        id: 3,
-        nombre: "Alimento para Cerdos",
-        icon: PiggyBank,
-        color: "bg-green-600", // Verde
-        beneficios: [
-            "Crecimiento acelerado",
-            "Mejora calidad de carne",
-            "Eficiencia alimentaria superior",
-            "Digestibilidad mejorada",
-            "Desarrollo óseo óptimo",
-        ],
-        descripcion: "Combinación de ingredientes premium para obtener cerdos saludables con excelente ganancia de peso.",
-        },
-    ]
-    const navigate = useNavigate();
-
-    function handleContactClick() {
-        navigate('/contactanos');
-        // Asegurar que la página de contacto quede al inicio
-        setTimeout(() => {
-            window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
-        }, 50);
-    }
-
+    export default function InfoProductos() {
     return (
         <section id="productos" className="py-16 md:py-24 bg-gray-50">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -71,13 +14,13 @@
             </p>
 
             <div className="grid md:grid-cols-3 gap-8">
-            {productos.map((producto) => {
-                const Icon = producto.icon
-                const colorClass = producto.color
+            {categoriasInfo.map((categoria) => {
+                const Icon = categoria.icon
+                const colorClass = categoria.color
 
                 return (
                 <div
-                    key={producto.id}
+                    key={categoria.categoria}
                     className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition overflow-hidden border-t-4 border-amber-50"
                 >
                     <div className={`${colorClass} text-white p-6 flex items-center justify-center`}>
@@ -85,12 +28,12 @@
                     </div>
 
                     <div className="p-8">
-                    <h3 className="text-2xl font-bold text-gray-800 mb-2">{producto.nombre}</h3>
-                    <p className="text-gray-600 mb-6 text-sm leading-relaxed">{producto.descripcion}</p>
+                    <h3 className="text-2xl font-bold text-gray-800 mb-2">{categoria.nombre}</h3>
+                    <p className="text-gray-600 mb-6 text-sm leading-relaxed">{categoria.descripcion}</p>
 
                     <h4 className="font-bold text-blue-600 mb-4">Beneficios Principales:</h4>
                     <ul className="space-y-2">
-                        {producto.beneficios.map((beneficio, idx) => (
+                        {categoria.beneficios.map((beneficio, idx) => (
                         <li key={idx} className="flex items-start gap-2">
                             <span
                             className={`${colorClass} text-white rounded-full w-5 h-5 flex items-center justify-center flex-shrink-0 text-xs font-bold mt-0.5`}
@@ -104,12 +47,12 @@
                     </div>
 
                     <div className="px-8 pb-8">
-                    <button
-                        className={`w-full ${colorClass} text-white py-2 rounded-lg hover:opacity-90 transition font-semibold`}
-                        onClick={handleContactClick}
+                    <Link
+                        to="/contactanos"
+                        className={`block w-full text-center ${colorClass} text-white py-2 rounded-lg hover:opacity-90 transition font-semibold`}
                     >
                         Solicitar Información
-                    </button>
+                    </Link>
                     </div>
                 </div>
                 )
@@ -143,7 +86,7 @@
                 </div>
                 </div>
                 <div className="flex gap-4">
-                <div className="bg-green-600 text-white rounded-full w-12 h-12 flex items-center justify-center flex-shrink-0 font-bold">
+                <div className="bg-green-700 text-white rounded-full w-12 h-12 flex items-center justify-center flex-shrink-0 font-bold">
                     3
                 </div>
                 <div>

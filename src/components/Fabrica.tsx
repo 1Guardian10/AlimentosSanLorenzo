@@ -1,5 +1,3 @@
-    "use client"
-
     import { CheckCircle, ShieldCheck, Package, Settings } from "lucide-react"
 import Video from "./Video"
 
@@ -64,8 +62,12 @@ import Video from "./Video"
             <div className="rounded-xl overflow-hidden border border-gray-200 hover:border-blue-300 transition hover:shadow-lg">
                 <div className="h-64 relative overflow-hidden">
                 <img 
-                    src="/images/fabrica4.jpg" 
+                    src="/images/fabrica4.webp" 
                     alt="Almacenamiento de granos"
+                    width={1280}
+                    height={853}
+                    loading="lazy"
+                    decoding="async"
                     className="w-full h-full object-cover hover:scale-105 transition duration-500"
                 />
                 <div className="absolute top-4 left-4 bg-blue-600 text-white px-3 py-1 rounded-md text-sm font-medium">
@@ -89,8 +91,12 @@ import Video from "./Video"
             <div className="rounded-xl overflow-hidden border border-gray-200 hover:border-red-300 transition hover:shadow-lg">
                 <div className="h-64 relative overflow-hidden">
                 <img 
-                    src="/images/fabrica3.jpg" 
+                    src="/images/fabrica3.webp" 
                     alt="Proceso de mezcla y molienda"
+                    width={1280}
+                    height={853}
+                    loading="lazy"
+                    decoding="async"
                     className="w-full h-full object-cover hover:scale-105 transition duration-500"
                 />
                 <div className="absolute top-4 left-4 bg-red-600 text-white px-3 py-1 rounded-md text-sm font-medium">
@@ -114,11 +120,15 @@ import Video from "./Video"
             <div className="rounded-xl overflow-hidden border border-gray-200 hover:border-green-300 transition hover:shadow-lg">
                 <div className="h-64 relative overflow-hidden">
                 <img 
-                    src="/images/fabrica1.jpg" 
+                    src="/images/fabrica1.webp" 
                     alt="Control de calidad en laboratorio"
+                    width={1280}
+                    height={853}
+                    loading="lazy"
+                    decoding="async"
                     className="w-full h-full object-cover hover:scale-105 transition duration-500"
                 />
-                <div className="absolute top-4 left-4 bg-green-600 text-white px-3 py-1 rounded-md text-sm font-medium">
+                <div className="absolute top-4 left-4 bg-green-700 text-white px-3 py-1 rounded-md text-sm font-medium">
                     Calidad
                 </div>
                 </div>

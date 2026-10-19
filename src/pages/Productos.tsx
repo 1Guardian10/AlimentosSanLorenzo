@@ -1,11 +1,17 @@
 import { useState } from "react";
-import Navbar from "../components/Navbar";
+import { useSearchParams } from "react-router-dom";
 import ProductCard from "../components/ProductCard";
+import PageHeader from "../components/PageHeader";
+import CategoryFilter from "../components/CategoryFilter";
 import { productos, categorias } from "../data/productos";
-import Footer from "../components/Footer";
 
 const Productos = () => {
-  const [categoriaSeleccionada, setCategoriaSeleccionada] = useState("Todos");
+  const [searchParams, setSearchParams] = useSearchParams();
+  const categoriaParam = searchParams.get("categoria");
+  const categoriaSeleccionada =
+    categoriaParam && categorias.includes(categoriaParam)
+      ? categoriaParam
+      : "Todos";
   const [busqueda, setBusqueda] = useState("");
 
   const productosFiltrados = productos.filter((producto) => {
@@ -22,17 +28,10 @@ const Productos = () => {
 
   return (
     <>
-      <Navbar />
-
-      {/* Header */}
-      <div className="pt-24 bg-linear-to-b from-blue-900 to-blue-800 text-white py-12">
-        <div className="max-w-6xl mx-auto px-4">
-          <h1 className="text-4xl font-bold mb-2">Catálogo de Productos</h1>
-          <p className="text-blue-100">
-            Explora nuestra completa línea de alimentos balanceados
-          </p>
-        </div>
-      </div>
+      <PageHeader
+        title="Catálogo de Productos"
+        subtitle="Explora nuestra completa línea de alimentos balanceados"
+      />
 
       {/* Contenedor principal */}
       <div className="max-w-6xl mx-auto px-4 py-8">
@@ -42,6 +41,7 @@ const Productos = () => {
           <div className="mb-6">
             <input
               type="text"
+              aria-label="Buscar producto"
               placeholder="Buscar producto..."
               value={busqueda}
               onChange={(e) => setBusqueda(e.target.value)}
@@ -50,21 +50,13 @@ const Productos = () => {
           </div>
 
           {/* Filtro de categorías */}
-          <div className="flex flex-wrap gap-2">
-            {categorias.map((categoria) => (
-              <button
-                key={categoria}
-                onClick={() => setCategoriaSeleccionada(categoria)}
-                className={`px-4 py-2 rounded-full font-semibold transition-colors duration-200 ${
-                  categoriaSeleccionada === categoria
-                    ? "bg-green-600 text-white"
-                    : "bg-gray-200 text-gray-800 hover:bg-gray-300"
-                }`}
-              >
-                {categoria}
-              </button>
-            ))}
-          </div>
+          <CategoryFilter
+            categorias={categorias}
+            selected={categoriaSeleccionada}
+            onSelect={(categoria) =>
+              setSearchParams(categoria === "Todos" ? {} : { categoria })
+            }
+          />
         </div>
 
         {/* Grid de productos */}
@@ -75,14 +67,14 @@ const Productos = () => {
             ))}
           </div>
         ) : (
-          <div className="text-center py-12">
+          <div className="text-center py-12" role="status">
             <p className="text-gray-500 text-lg">
-              No se encontraron productos en esta categoría
+              No se encontraron productos que coincidan con tu búsqueda o
+              categoría.
             </p>
           </div>
         )}
         </div>
-        <Footer />
     </>
   );
 };

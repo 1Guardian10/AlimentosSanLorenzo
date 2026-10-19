@@ -1,9 +1,5 @@
-"use client"
-
     import { useState } from "react"
     import { Phone, Mail, Clock, MessageCircle, Send, Building, User } from "lucide-react"
-    import Footer from "../components/Footer"
-    import Navbar from "../components/Navbar"
 
     export default function Contactanos() {
     const [formData, setFormData] = useState({
@@ -29,12 +25,10 @@
     }
 
     return (
-        <div className="min-h-screen flex flex-col bg-gray-50">
-        {/* Navbar */}
-        <Navbar />
+        <div className="bg-gray-50">
 
         {/* Main Content */}
-        <main className="flex-grow">
+        <div className="flex-grow">
             {/* Hero Section */}
             <section className="bg-gradient-to-r from-blue-700 via-blue-600 to-blue-800 text-white py-26">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -63,12 +57,14 @@
                     <form onSubmit={handleSubmit} className="space-y-6">
                     <div className="grid md:grid-cols-2 gap-6">
                         <div>
-                        <label className="block text-gray-700 mb-2 font-medium">Nombre *</label>
+                        <label htmlFor="nombre" className="block text-gray-700 mb-2 font-medium">Nombre *</label>
                         <div className="relative">
                             <User className="absolute left-3 top-3 w-5 h-5 text-blue-500" />
                             <input
+                            id="nombre"
                             type="text"
                             name="nombre"
+                            autoComplete="name"
                             required
                             value={formData.nombre}
                             onChange={handleChange}
@@ -78,12 +74,14 @@
                         </div>
                         </div>
                         <div>
-                        <label className="block text-gray-700 mb-2 font-medium">Apellido *</label>
+                        <label htmlFor="apellido" className="block text-gray-700 mb-2 font-medium">Apellido *</label>
                         <div className="relative">
                             <User className="absolute left-3 top-3 w-5 h-5 text-blue-500" />
                             <input
+                            id="apellido"
                             type="text"
                             name="apellido"
+                            autoComplete="family-name"
                             required
                             value={formData.apellido}
                             onChange={handleChange}
@@ -95,12 +93,14 @@
                     </div>
 
                     <div>
-                        <label className="block text-gray-700 mb-2 font-medium">Email *</label>
+                        <label htmlFor="email" className="block text-gray-700 mb-2 font-medium">Email *</label>
                         <div className="relative">
                         <Mail className="absolute left-3 top-3 w-5 h-5 text-blue-500" />
                         <input
+                            id="email"
                             type="email"
                             name="email"
+                            autoComplete="email"
                             required
                             value={formData.email}
                             onChange={handleChange}
@@ -111,12 +111,15 @@
                     </div>
 
                     <div>
-                        <label className="block text-gray-700 mb-2 font-medium">Teléfono</label>
+                        <label htmlFor="telefono" className="block text-gray-700 mb-2 font-medium">Teléfono</label>
                         <div className="relative">
                         <Phone className="absolute left-3 top-3 w-5 h-5 text-blue-500" />
                         <input
+                            id="telefono"
                             type="tel"
                             name="telefono"
+                            inputMode="tel"
+                            autoComplete="tel"
                             value={formData.telefono}
                             onChange={handleChange}
                             className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
@@ -126,10 +129,11 @@
                     </div>
 
                     <div>
-                        <label className="block text-gray-700 mb-2 font-medium">Asunto *</label>
+                        <label htmlFor="asunto" className="block text-gray-700 mb-2 font-medium">Asunto *</label>
                         <div className="relative">
                         <MessageCircle className="absolute left-3 top-3 w-5 h-5 text-blue-500 z-10" />
                         <select 
+                            id="asunto"
                             name="asunto"
                             required
                             value={formData.asunto}
@@ -147,8 +151,9 @@
                     </div>
 
                     <div>
-                        <label className="block text-gray-700 mb-2 font-medium">Mensaje *</label>
+                        <label htmlFor="mensaje" className="block text-gray-700 mb-2 font-medium">Mensaje *</label>
                         <textarea
+                        id="mensaje"
                         name="mensaje"
                         rows={5}
                         required
@@ -242,7 +247,7 @@
                             href="https://wa.me/573001234567" 
                             target="_blank" 
                             rel="noopener noreferrer"
-                            className="inline-block bg-green-500 text-white px-6 py-2 rounded-lg hover:bg-green-600 transition-colors font-medium"
+                            className="inline-block bg-green-700 text-white px-6 py-2 rounded-lg hover:bg-green-800 transition-colors font-medium"
                             >
                             Escribir por WhatsApp
                             </a>
@@ -351,7 +356,7 @@
                     href="https://wa.me/573001234567" 
                     target="_blank" 
                     rel="noopener noreferrer"
-                    className="inline-block bg-green-500 text-white px-6 py-2 rounded-lg hover:bg-green-600 transition-colors"
+                    className="inline-block bg-green-700 text-white px-6 py-2 rounded-lg hover:bg-green-800 transition-colors"
                     >
                     Escribir por WhatsApp
                     </a>
@@ -359,10 +364,8 @@
                 </div>
             </div>
             </section>
-        </main>
+        </div>
 
-        {/* Footer */}
-        <Footer />
         </div>
     )
     }

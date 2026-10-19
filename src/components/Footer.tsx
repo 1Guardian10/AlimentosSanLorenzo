@@ -1,17 +1,7 @@
-// Importar los iconos de react-icons
-import { FaPhoneAlt, FaEnvelope, FaMapMarkerAlt } from "react-icons/fa";
-import {useNavigate} from 'react-router-dom';
+import { Phone, Mail, MapPin } from "lucide-react";
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
-  const navigate = useNavigate();
-
-  function handleLocationClick(url:string) {
-    navigate(url);
-    // Asegurar que la página de nosotros quede al inicio
-    setTimeout(() => {
-      window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
-    }, 50);
-  }
   return (
     <footer className="bg-blue-900 text-white">
       {/* Contenido principal */}
@@ -21,12 +11,19 @@ const Footer = () => {
           <div>
             <div className="flex items-center gap-2 mb-4">
               <div className="bg-white rounded-full p-2 w-10 h-10 flex items-center justify-center">
-                <img src="/images/logoSINFONDO.PNG" alt="Logo San Lorenzo" />
+                <img 
+                  src="/images/logoSINFONDO-96.webp" 
+                  srcSet="/images/logoSINFONDO-96.webp 96w, /images/logoSINFONDO-224.webp 224w, /images/logoSINFONDO-448.webp 448w"
+                  sizes="24px"
+                  alt="Logo San Lorenzo"
+                  width={24}
+                  height={24}
+                />
               </div>
               <span className="font-bold text-lg">San Lorenzo</span>
             </div>
             <p className="text-blue-100 text-sm">
-              Más de 20 años nutriendo ganado de calidad
+              Desde 1998 nutriendo ganado de calidad
             </p>
           </div>
 
@@ -35,20 +32,36 @@ const Footer = () => {
             <h3 className="font-bold text-lg mb-4">Navegación</h3>
             <ul className="space-y-2 text-blue-100">
               <li>
-                <button
-                  onClick={() => handleLocationClick('/')}
+                <Link
+                  to="/"
                   className="hover:text-white transition-colors"
                 >
                   Inicio
-                </button>
+                </Link>
               </li>
               <li>
-                <button
-                  onClick={() => handleLocationClick('/productos')}
+                <Link
+                  to="/nosotros"
                   className="hover:text-white transition-colors"
                 >
-                  Catalogo
-                </button>
+                  Nosotros
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/productos"
+                  className="hover:text-white transition-colors"
+                >
+                  Catálogo
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/promociones"
+                  className="hover:text-white transition-colors"
+                >
+                  Promociones
+                </Link>
               </li>
             </ul>
           </div>
@@ -58,19 +71,28 @@ const Footer = () => {
             <h3 className="font-bold text-lg mb-4">Categorías</h3>
             <ul className="space-y-2 text-blue-100">
               <li>
-                <button className="hover:text-white transition-colors text-left">
+                <Link
+                  to="/productos?categoria=Bovinos"
+                  className="hover:text-white transition-colors text-left"
+                >
                   Bovinos
-                </button>
+                </Link>
               </li>
               <li>
-                <button className="hover:text-white transition-colors text-left">
+                <Link
+                  to="/productos?categoria=Porcinos"
+                  className="hover:text-white transition-colors text-left"
+                >
                   Porcinos
-                </button>
+                </Link>
               </li>
               <li>
-                <button className="hover:text-white transition-colors text-left">
+                <Link
+                  to="/productos?categoria=Aves"
+                  className="hover:text-white transition-colors text-left"
+                >
                   Aves
-                </button>
+                </Link>
               </li>
             </ul>
           </div>
@@ -81,23 +103,23 @@ const Footer = () => {
             <ul className="space-y-3 text-blue-100">
               <li className="flex items-center gap-2">
                 {/* Icono de teléfono */}
-                <FaPhoneAlt className="text-white" />
+                <Phone className="text-white" size={16} />
                 <a href="tel:+573001234567" className="hover:text-white transition-colors">
                   (+57) 300 123 4567
                 </a>
               </li>
               <li className="flex items-center gap-2">
                 {/* Icono de correo */}
-                <FaEnvelope className="text-white" />
+                <Mail className="text-white" size={16} />
                 <a href="mailto:info@sanlorenzo.com" className="hover:text-white transition-colors">
                   info@sanlorenzo.com
                 </a>
               </li>
               <li className="flex items-center gap-2">
                 {/* Icono de ubicación */}
-                <FaMapMarkerAlt className="text-white" />
+                <MapPin className="text-white" size={16} />
                 {/* Ubicación corregida */}
-                <span>San Lorenzo - Tarija, Bolivia[citation:1]</span>
+                <span>San Lorenzo - Tarija, Bolivia</span>
               </li>
             </ul>
           </div>
@@ -109,15 +131,15 @@ const Footer = () => {
         {/* Pie de página */}
         <div className="flex flex-col md:flex-row justify-between items-center text-blue-100 text-sm">
           <p>
-            © 2025 Alimentos Balanceados San Lorenzo. Todos los derechos reservados.
+            © {new Date().getFullYear()} Alimentos Balanceados San Lorenzo. Todos los derechos reservados.
           </p>
           <div className="flex gap-6 mt-4 md:mt-0">
-            <button
-                  onClick={() => handleLocationClick('/Contactanos')}
-                  className="hover:text-white transition-colors"
-                >
-                  Contacto
-                </button>
+            <Link
+              to="/contactanos"
+              className="hover:text-white transition-colors"
+            >
+              Contacto
+            </Link>
           </div>
         </div>
       </div>

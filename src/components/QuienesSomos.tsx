@@ -1,15 +1,16 @@
     import { Award, Users, TrendingUp, Shield, Clock, Globe } from "lucide-react"
+    import { Link } from "react-router-dom"
 
     export default function QuienesSomos() {
     return (
-        <section id="quienes-somos" className="py-16 md:py-25 bg-gray-50">
+        <section id="quienes-somos" className="pt-24 pb-16 md:pt-28 md:pb-24 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             {/* Header */}
             <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-blue-800 mb-4">¿Quiénes Somos?</h2>
+            <h1 className="text-4xl md:text-5xl font-bold text-blue-800 mb-4">¿Quiénes Somos?</h1>
             <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-green-500 mx-auto mb-6"></div>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
-                Más de 25 años siendo líderes en la producción de alimentos balanceados de alta calidad 
+                Desde 1998 siendo líderes en la producción de alimentos balanceados de alta calidad 
                 para el sector ganadero y avícola en Bolivia y la región.
             </p>
             </div>
@@ -76,8 +77,12 @@
                     {/* Logo */}
                     <div className="w-48 h-48 md:w-56 md:h-56 mb-6 flex items-center justify-center">
                     <img 
-                        src="/images/logoSINFONDO.PNG" 
+                        src="/images/logoSINFONDO-224.webp" 
+                        srcSet="/images/logoSINFONDO-96.webp 96w, /images/logoSINFONDO-224.webp 224w, /images/logoSINFONDO-448.webp 448w"
+                        sizes="(min-width: 768px) 224px, 192px"
                         alt="Logo Alimentos Balanceados San Lorenzo"
+                        width={224}
+                        height={224}
                         className="w-full h-full object-contain"
                     />
                     </div>
@@ -91,8 +96,8 @@
                         San Lorenzo
                     </h4>
                     <div className="inline-flex items-center gap-2 bg-blue-100 px-4 py-2 rounded-full">
-                        <span className="text-blue-700 font-bold">25+</span>
-                        <span className="text-gray-700 text-sm">Años de Excelencia</span>
+                        <span className="text-blue-700 font-bold">Desde 1998</span>
+                        <span className="text-gray-700 text-sm">Excelencia y confianza</span>
                     </div>
                     </div>
                 </div>
@@ -152,12 +157,12 @@
 
             {/* Call to Action simple */}
             <div className="mt-16 text-center">
-            <a 
-                href="/contactanos" 
+            <Link 
+                to="/contactanos" 
                 className="inline-block bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors shadow-md hover:shadow-lg"
             >
                 Contáctanos para Más Información
-            </a>
+            </Link>
             </div>
         </div>
         </section>

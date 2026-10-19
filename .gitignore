@@ -17,6 +17,12 @@ public/videos/fabrica.mp4
 .firebase
 .firebaserc
 firebase.json
+# Gentle AI local artifacts
+.atl/
+.engram/
+.gentle-ai/
+openspec/
+sdd/
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

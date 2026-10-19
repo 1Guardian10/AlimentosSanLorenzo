@@ -1,5 +1,3 @@
-"use client"
-
 import { useEffect, useState } from "react"
 
 const DEFAULT_VIDEO_ID = "J__BajhUv1w"
@@ -16,7 +14,7 @@ const Video = ({ videoId = DEFAULT_VIDEO_ID }: { videoId?: string }) => {
                 )
                 if (!mounted) return
                 setEmbeddable(res.ok)
-            } catch (e) {
+            } catch {
                 if (!mounted) return
                 setEmbeddable(false)
             }
@@ -28,7 +26,7 @@ const Video = ({ videoId = DEFAULT_VIDEO_ID }: { videoId?: string }) => {
     }, [videoId])
 
     const origin = typeof window !== "undefined" ? window.location.origin : ""
-    const embedSrc = `https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&mute=1&loop=1&playlist=${videoId}&origin=${encodeURIComponent(
+    const embedSrc = `https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&mute=1&loop=1&playlist=${videoId}&playsinline=1&origin=${encodeURIComponent(
         origin
     )}`
 
@@ -43,10 +41,9 @@ const Video = ({ videoId = DEFAULT_VIDEO_ID }: { videoId?: string }) => {
             {embeddable === true && (
                 <div className="w-full h-[400px]">
                     <iframe
-                        className="w-full h-full object-cover"
+                        className="w-full h-full object-cover border-0"
                         src={embedSrc}
-                        title="YouTube video player"
-                        frameBorder="0"
+                        title="Video de la fábrica de Alimentos San Lorenzo"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
                         allowFullScreen
                     />
@@ -62,7 +59,7 @@ const Video = ({ videoId = DEFAULT_VIDEO_ID }: { videoId?: string }) => {
                 >
                     <img
                         src={`https://img.youtube.com/vi/${videoId}/hqdefault.jpg`}
-                        alt="Video thumbnail"
+                        alt="Miniatura del video de la fábrica de Alimentos San Lorenzo"
                         className="w-full h-full object-cover"
                     />
                     <div className="absolute inset-0 flex items-center justify-center">

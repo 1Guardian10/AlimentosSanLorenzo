@@ -1,3 +1,6 @@
+import { Milk, Bird, PiggyBank } from "lucide-react";
+import type { LucideIcon } from "lucide-react";
+
 export interface Producto {
   id: number;
   nombre: string;
@@ -8,8 +11,16 @@ export interface Producto {
   precio: number;
   descuento?: number;
   esCombo?: boolean;
-  productoCombo?: string[];
   comboItems?: number[];
+}
+
+export interface CategoriaInfo {
+  categoria: string;
+  nombre: string;
+  icon: LucideIcon;
+  color: string;
+  beneficios: string[];
+  descripcion: string;
 }
 
 export const productos: Producto[] = [
@@ -23,7 +34,7 @@ export const productos: Producto[] = [
       "Mayor producción",
       "Costo-beneficio óptimo"
     ],
-    imagen: "images/producto1.png",
+    imagen: "/images/producto1.webp",
     precio: 45000,
     descuento: 10
   },
@@ -37,7 +48,7 @@ export const productos: Producto[] = [
       "Vitaminas B12",
       "Digestibilidad alta"
     ],
-    imagen: "images/producto1.png",
+    imagen: "/images/producto1.webp",
     precio: 38000,
     descuento: 5
   },
@@ -51,7 +62,7 @@ export const productos: Producto[] = [
       "Ganancias 950g/día",
       "Carne de calidad"
     ],
-    imagen: "images/producto2.png",
+    imagen: "/images/producto2.webp",
       precio: 42000,
       descuento: 15
   },
@@ -65,7 +76,7 @@ export const productos: Producto[] = [
         "Mejora apetito",
         "Fácil de mezclar"
       ],
-    imagen: "images/producto2.png",
+    imagen: "/images/producto2.webp",
       precio: 8000
     },
     {
@@ -74,11 +85,10 @@ export const productos: Producto[] = [
       categoria: "Porcinos",
       descripcion: "Combo: Alimento Porcinos Engorde + Suplemento Vitamínico",
       caracteristicas: ["Ahorro por combo", "Mejor rendimiento"],
-    imagen: "images/producto2.png",
+    imagen: "/images/producto2.webp",
       precio: 0,
       descuento: 10,
       esCombo: true,
-      productoCombo: ["Alimento Porcinos Engorde", "Suplemento Vitamínico"],
       comboItems: [3, 6]
     },
   {
@@ -91,7 +101,7 @@ export const productos: Producto[] = [
       "Adaptación suave",
       "Salud intestinal"
     ],
-    imagen: "images/producto2.png",
+    imagen: "/images/producto2.webp",
     precio: 35000
   },
   {
@@ -104,15 +114,66 @@ export const productos: Producto[] = [
       "Pigmentantes naturales",
       "Huevos de calidad premium"
     ],
-    imagen: "images/producto3.png",
+    imagen: "/images/producto3.webp",
     precio: 40000,
     descuento: 8
   },
 ];
 
+export const categoriasInfo: CategoriaInfo[] = [
+  {
+    categoria: "Bovinos",
+    nombre: "Alimento para Vacas",
+    icon: Milk,
+    color: "bg-blue-600", // Azul
+    beneficios: [
+      "Aumenta producción de leche",
+      "Mejora calidad nutricional",
+      "Promueve crecimiento muscular",
+      "Sistema digestivo óptimo",
+      "Fortalece sistema inmunológico",
+    ],
+    descripcion:
+      "Fórmula balanceada especialmente desarrollada para maximizar la producción lechera y el crecimiento de ganado bovino.",
+  },
+  {
+    categoria: "Aves",
+    nombre: "Alimento para Gallinas",
+    icon: Bird,
+    color: "bg-red-600", // Rojo
+    beneficios: [
+      "Aumenta producción de huevos",
+      "Fortalece cáscara de huevo",
+      "Plumaje más brillante",
+      "Mayor vitalidad y salud",
+      "Nutrientes esenciales equilibrados",
+    ],
+    descripcion: "Nutrición completa para gallinas ponedoras con todos los elementos necesarios para postura óptima.",
+  },
+  {
+    categoria: "Porcinos",
+    nombre: "Alimento para Cerdos",
+    icon: PiggyBank,
+    color: "bg-green-700", // Verde
+    beneficios: [
+      "Crecimiento acelerado",
+      "Mejora calidad de carne",
+      "Eficiencia alimentaria superior",
+      "Digestibilidad mejorada",
+      "Desarrollo óseo óptimo",
+    ],
+    descripcion: "Combinación de ingredientes premium para obtener cerdos saludables con excelente ganancia de peso.",
+  },
+];
+
+// Orden de las categorías en los filtros (TODOS + las categorías de las tarjetas).
+const categoriasOrden = ["Bovinos", "Porcinos", "Aves"];
+
 export const categorias = [
   "Todos",
-  "Bovinos",
-  "Porcinos",
-  "Aves",
+  ...categoriasOrden.flatMap((categoria) =>
+    categoriasInfo
+      .filter((info) => info.categoria === categoria)
+      .map((info) => info.categoria),
+  ),
 ];

@@ -1,7 +1,7 @@
 import { useState } from "react";
-import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
 import ProductCard from "../components/ProductCard";
+import PageHeader from "../components/PageHeader";
+import CategoryFilter from "../components/CategoryFilter";
 import { productos, categorias } from "../data/productos";
 
 const Promociones = () => {
@@ -22,17 +22,10 @@ const Promociones = () => {
 
   return (
     <>
-      <Navbar />
-
-      {/* Header */}
-      <div className="pt-24 bg-linear-to-b from-blue-900 to-blue-800 text-white py-12">
-        <div className="max-w-6xl mx-auto px-4">
-          <h1 className="text-4xl font-bold mb-2">Promociones y Combos</h1>
-          <p className="text-blue-100">
-            Aprovecha nuestras ofertas especiales y combos exclusivos
-          </p>
-        </div>
-      </div>
+      <PageHeader
+        title="Promociones y Combos"
+        subtitle="Aprovecha nuestras ofertas especiales y combos exclusivos"
+      />
 
       {/* Contenedor principal (estilo igual a Productos) */}
       <div className="max-w-6xl mx-auto px-4 py-8">
@@ -41,21 +34,11 @@ const Promociones = () => {
           <h2 className="text-lg font-semibold text-gray-700 mb-4">
             Filtrar por categoría:
           </h2>
-          <div className="flex flex-wrap gap-2">
-            {categorias.map((categoria) => (
-              <button
-                key={categoria}
-                onClick={() => setCategoriaSeleccionada(categoria)}
-                className={`px-4 py-2 rounded-full font-semibold transition-colors duration-200 ${
-                  categoriaSeleccionada === categoria
-                    ? "bg-green-600 text-white"
-                    : "bg-gray-200 text-gray-800 hover:bg-gray-300"
-                }`}
-              >
-                {categoria}
-              </button>
-            ))}
-          </div>
+          <CategoryFilter
+            categorias={categorias}
+            selected={categoriaSeleccionada}
+            onSelect={setCategoriaSeleccionada}
+          />
         </div>
 
         {/* Contenido Principal */}
@@ -95,7 +78,7 @@ const Promociones = () => {
             <div className="mt-6">
               <button
                 onClick={() => setCategoriaSeleccionada("Todos")}
-                className="bg-green-600 hover:bg-green-700 text-white font-semibold py-2 px-6 rounded-lg transition-colors duration-300"
+                className="bg-green-700 hover:bg-green-800 text-white font-semibold py-2 px-6 rounded-lg transition-colors duration-300"
               >
                 Ver todas las promociones
               </button>
@@ -103,8 +86,6 @@ const Promociones = () => {
           </div>
         )}
       </div>
-
-      <Footer />
     </>
   );
 };

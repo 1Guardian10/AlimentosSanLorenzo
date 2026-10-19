@@ -1,6 +1,10 @@
 import type { Producto } from "../data/productos";
 import { productos as allProductos } from "../data/productos";
 
+const productosPorId = new Map<number, Producto>(
+  allProductos.map((producto) => [producto.id, producto]),
+);
+
 interface ProductCardProps {
   producto: Producto;
 }
@@ -9,7 +13,7 @@ const ProductCard = ({ producto }: ProductCardProps) => {
   // Calcular precio base: si es combo y tiene comboItems, sumar precios de los items
   const basePrecio = producto.comboItems
     ? producto.comboItems.reduce((s, id) => {
-        const item = allProductos.find((p) => p.id === id);
+        const item = productosPorId.get(id);
         return s + (item?.precio ?? 0);
       }, 0)
     : producto.precio;
@@ -19,16 +23,20 @@ const ProductCard = ({ producto }: ProductCardProps) => {
     : basePrecio;
 
   return (
-    <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 hover:scale-105">
+    <div className="group bg-white rounded-lg shadow-md overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 hover:scale-105">
       {/* Imagen */}
       <div className="relative h-64 bg-gray-200 overflow-hidden">
         <img
           src={producto.imagen}
           alt={producto.nombre}
+          width={832}
+          height={1248}
+          loading="lazy"
+          decoding="async"
           className="w-full h-full object-cover transition-transform duration-300 hover:scale-110"
         />
         {/* Badge de categoría */}
-        <div className="absolute top-3 right-3 bg-green-600 text-white px-3 py-1 rounded-full text-sm font-semibold transition-all duration-300 opacity-90 hover:opacity-100 hover:bg-green-700">
+        <div className="absolute top-3 right-3 bg-green-700 text-white px-3 py-1 rounded-full text-sm font-semibold transition-all duration-300 opacity-90 hover:opacity-100 hover:bg-green-800">
           {producto.categoria}
         </div>
 
@@ -88,7 +96,7 @@ const ProductCard = ({ producto }: ProductCardProps) => {
               {producto.esCombo && producto.comboItems && (
                 <div className="text-sm text-gray-600">
                   Incluye: {producto.comboItems.map((id, idx) => {
-                    const item = allProductos.find((p) => p.id === id);
+                    const item = productosPorId.get(id);
                     return (
                       <span key={id} className="mr-1">
                         {item ? item.nombre : `#${id}`}{idx < (producto.comboItems?.length ?? 0) - 1 ? ", " : ""}

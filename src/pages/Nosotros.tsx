@@ -1,5 +1,3 @@
-import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
 import MisionVision from "../components/MisionVision";
 import Fabrica from "../components/Fabrica";
 import QuienesSomos from "../components/QuienesSomos";
@@ -7,11 +5,9 @@ import QuienesSomos from "../components/QuienesSomos";
 const Nosotros = () => {
     return (
         <>
-        <Navbar />      
-        <QuienesSomos/>      
+        <QuienesSomos/>
         <Fabrica />
         <MisionVision />
-        <Footer />
         </>
     )
 }
